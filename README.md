@@ -18,7 +18,7 @@ AI 활용 건강기능식품 추천 / 판매 브랜드
 - **Framework** : `Eclipse 2021-03 (4.19.0)`
 - **Database** : `Oracle DB(11xe)`
 - **ORM** : `Mybatis`
-
+<img width="80%" src="https://user-images.githubusercontent.com/128360104/234207271-858a3e71-3530-4c4a-9d9d-8f5f9c72d6a8.gif"/>
 ## 📌 주요 기능
 #### 드론 배송 (사용자가 원하는 시간에)
 - 카카오맵 API 연동
