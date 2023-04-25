@@ -1,6 +1,7 @@
 # 2023-Spring-Project-1
-스프링 + JSP 파싱 (스프링 버전)<br>
-스프링부트 버전 준비중
+스프링 + JSP 파싱 (스프링 버전)(~ing : front-end부분 정리중)
+<br>
+스프링부트 버전 준비중(~ing)
 
 ## 🖥️ 프로젝트 소개
 VitalChoice (바이탈초이스)
