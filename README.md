@@ -13,10 +13,10 @@ AI 활용 건강기능식품 추천 / 판매 브랜드
 [정부 프레임워크4.0]
 - `Java 11`
 - `JDK 11.0.18`
-- **IDE** : STS 3/4
-- **Framework** : Eclipse 2021-03 (4.19.0)
-- **Database** : Oracle DB(11xe)
-- **ORM** : Mybatis
+- **IDE** : `STS 3/4`
+- **Framework** : `Eclipse 2021-03 (4.19.0)`
+- **Database** : `Oracle DB(11xe)`
+- **ORM** : `Mybatis`
 
 ## 📌 주요 기능
 #### 드론 배송
