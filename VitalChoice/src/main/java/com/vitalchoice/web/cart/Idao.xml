@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.cart.Service_cart">
+	<select id="cartcheck" resultType="String">
+		select count(*) from cart where product_num=#{param1} and user_id=#{param2}
+	</select>
+	<insert id="insert">
+		insert into cart values (cart_seq.nextval,#{param1},#{param2},#{param3},'1')
+	</insert>
+	<update id="insertmodify">
+		update cart set product_count=product_count+#{param3} where product_num=#{param1} and user_id=#{param2}
+	</update>
+	<select id="out" resultType="com.vitalchoice.web.cart.CartDTO">
+		select user_id,cart_num,cart.product_num as product_num,product_name,product_price,product_count,product_check,store.store_sname as store_sname
+		from cart,product,store
+		where cart.product_num=product.product_num and store.store_snum= product.store_snum and cart.user_id=#{param1}
+	</select>
+	<update id="cartcntmodify">
+		update cart set product_count=#{param2} where user_id=#{param3} and product_num=#{param1}
+	</update>
+	<delete id="cartdelete">
+		delete from cart where product_num=#{param1} and user_id=#{param2}
+	</delete>
+</mapper>
