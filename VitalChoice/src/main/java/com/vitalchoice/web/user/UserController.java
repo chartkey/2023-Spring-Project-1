@@ -88,7 +88,7 @@ public class UserController {
 		String user_email = request.getParameter("user_email");
 		String host = "smtp.naver.com";
 		String username = "hanthsong@naver.com";
-		String password = "0278dpgpa!";
+		String password = "";
 		String num = "";
 		try {
 
@@ -223,7 +223,7 @@ public class UserController {
 		String user_email = request.getParameter("user_email");
 		String host = "smtp.naver.com";
 		String username = "hanthsong@naver.com";
-		String password = "0278dpgpa!";
+		String password = "";
 		String num = "";
 		try {
 			Properties props = new Properties();
