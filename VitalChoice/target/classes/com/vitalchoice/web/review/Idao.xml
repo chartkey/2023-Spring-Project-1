@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.review.Service_review">
+	<!-- 회원가입 정보 저장 -->
+	<select id="prdout" resultType="com.vitalchoice.web.review.PrdshowDTO">
+		select pd.product_name, st.store_sname, img.stored_file_name 
+		from product pd, store st, product_thumb_imagefile img 
+		where pd.store_snum = st.store_snum 
+		and pd.product_num = img.product_num 
+		and pd.product_num=(select product_num from product where product_num=#{param1}) 
+		and img.file_number=1
+	</select>
+	<insert id="insertReview">
+		insert into PRODUCT_REVIEW values(#{param1}, #{param2}, #{param3}, sysdate, #{param4})
+	</insert>
+	<insert id="insertReviewImageFile">
+		insert into product_review_imagefile values(#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+	<select id="getGrade" resultType="double">
+		select avg(review_grade) from product_review where product_num=#{param1}
+	</select>
+	<update id="updateGrade">
+		update product set product_grade=#{param1} where product_num=#{param2}
+	</update>
+</mapper>

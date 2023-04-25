@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.sellerask.Service_sellerask">
+	<select id="getReplyDTO" resultType="com.vitalchoice.web.productout.ReplyDTO">
+		SELECT r.reply_number, r.product_num, p.product_name, r.user_id, r.content, r.reporting_date, r.reply_origin_number, r.reply_depth 
+		FROM product_reply r 
+		JOIN product p ON p.product_num = r.product_num 
+		WHERE p.store_snum = #{param1} and r.reply_depth=0  and reply_yn=0
+		ORDER BY r.reply_number DESC
+	</select>
+	<insert id="insertQna">
+		insert into product_reply values(reply_seq.nextval, #{param1}, 'seller', #{param2}, sysdate, #{param3}, 1, 0)
+	</insert>
+	<update id="updateReply_yn">
+		update product_reply set reply_yn = 1 where reply_number = #{param1}
+	</update>
+</mapper>
