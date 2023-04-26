@@ -24,8 +24,8 @@ AI 활용 건강기능식품 추천 / 판매 브랜드
 <br>
 
 ### 📌 주요 기능
-### 소비자 기능<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/4">구현이미지</a>
-
+### 소비자 기능<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/4">🖼이미지 보러가기</a>
+### 판매자 기능<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/5">🖼이미지 보러가기</a>
 #### 드론 배송 (사용자가 원하는 시간에)
 - 카카오맵 API 연동
 - 기상청 API 연동(공공데이터포탈)
