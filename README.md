@@ -12,12 +12,13 @@ AI 활용 건강기능식품 추천 / 판매 브랜드
 
 ### ⚙️ 개발 환경
 [정부 프레임워크4.0]
-- `Java 11`
+- `Java 11` `Jsp` `Spring`
 - `JDK 11.0.18`
 - **IDE** : `STS 3/4`
 - **Framework** : `Eclipse 2021-03 (4.19.0)`
 - **Database** : `Oracle DB(11xe)`
 - **ORM** : `Mybatis`
+- **WEB/WAS** : `Apache` `Tomcat`
 <img width="80%" src="https://user-images.githubusercontent.com/128360104/234207271-858a3e71-3530-4c4a-9d9d-8f5f9c72d6a8.gif"/>
 <br>
 
