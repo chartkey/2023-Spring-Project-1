@@ -26,8 +26,8 @@ AI 활용 건강기능식품 추천 / 판매 및 드론배송 브랜드
 <img width="80%" src="https://user-images.githubusercontent.com/128360104/234207271-858a3e71-3530-4c4a-9d9d-8f5f9c72d6a8.gif"/>
 <br>
 
-#### 소비자 구현 페이지<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/4">🖼이미지 보러가기</a>
-#### 판매자 구현 페이지<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/5">🖼이미지 보러가기</a>
+#### 소비자 구현 페이지<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/4">🖼이미지 보러가기(디테일 수시변경)</a>
+#### 판매자 구현 페이지<a href="https://github.com/chartkey/2023-Spring-Project-1/issues/5">🖼이미지 보러가기(디테일 수시변경)</a>
 ### 📌 주요 기능
 #### 드론 배송 (사용자가 원하는 시간에)
 - 카카오맵 API 연동
