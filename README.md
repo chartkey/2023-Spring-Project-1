@@ -1,6 +1,7 @@
-# 2023-Spring-Project-1
+# VitalChoice(바이탈초이스)
+<img src="https://user-images.githubusercontent.com/128360104/234637043-82fc7dc1-155f-4d7b-9eff-0ec30e47f761.png"/>
 ## Spring + JSP 파싱 (스프링 버전)(~ing)<br>
-## (Back-end 기능부분 구현완료)(코드 업로드 완료)<br>
+### (Back-end 기능부분 구현완료)(코드 업로드 완료)<br>
 ### (front-end 부분 정리후 구현 이미지 업로드중 ~ing)
 #### Spring Boot + Thymeleaf (스프링부트 버전)준비중(~ing)
 
