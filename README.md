@@ -1,6 +1,6 @@
 # VITALCHOICE(바이탈초이스)
 <img width="70%" src="https://user-images.githubusercontent.com/128360104/234637043-82fc7dc1-155f-4d7b-9eff-0ec30e47f761.png"/>
-<br>
+<br><br>
 
 ## Spring + JSP 파싱 (스프링 버전)(~ing)<br>
 ### (Back-end 기능부분 구현완료)(코드 업로드 완료)<br>
