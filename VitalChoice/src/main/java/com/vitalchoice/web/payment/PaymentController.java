@@ -229,7 +229,7 @@ public class PaymentController {
 		String email = serv.deliveryemail(user_id);
 		String host = "smtp.naver.com";
         String username = "hanthsong@naver.com";
-        String password = "0278dpgpa!";
+        String password = "pw";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
