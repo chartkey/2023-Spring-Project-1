@@ -34,7 +34,7 @@ public class ChatController {
 
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
-        con.setRequestProperty("Authorization", "Bearer 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");
+        con.setRequestProperty("Authorization", "Bearer sk-");
         JSONObject data = new JSONObject();
         data.put("model", "text-davinci-003");
         data.put("prompt", qqq);
@@ -63,7 +63,7 @@ public class ChatController {
         HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
-        con.setRequestProperty("Authorization", "Bearer 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");
+        con.setRequestProperty("Authorization", "Bearer sk-");
         JSONObject data = new JSONObject();
         data.put("model", "text-davinci-003");
         data.put("prompt", qqq);
