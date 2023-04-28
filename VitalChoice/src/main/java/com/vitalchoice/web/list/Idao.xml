@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.list.Service_ProductList">
+	<select id="getLatest" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1
+					order by prd.product_num desc) T)
+				where rn between #{start} and #{end}
+				
+	</select>
+	<select id="getThumb" resultType="String">
+		select stored_file_name from product_thumb_imagefile where file_number=1 order by product_num desc
+	</select>
+	<select id="getCntList" resultType="Integer">
+		select count(*) from product
+	</select>
+	<select id="getCntListPerCate" resultType="Integer">
+		select count(*) from product where category_num=#{param1}
+	</select>
+	<select id="getCntListSearch" resultType="Integer">
+		select count(*) from product prd, store st
+		where prd.store_snum = st.store_snum and prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%'
+	</select>
+	<select id="getSellCount" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1
+					order by prd.product_sellcount desc) T)
+				where rn between #{start} and #{end}	
+		
+	</select>
+	<select id="getLow" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1
+					order by prd.product_price asc) T)
+				where rn between #{start} and #{end}	
+		
+	</select>
+	<select id="getHigh" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1
+					order by prd.product_price desc) T)
+				where rn between #{start} and #{end}	
+		
+	</select>
+	<select id="getLike" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1
+					order by prd.product_like desc) T)
+				where rn between #{start} and #{end}	
+		
+	</select>
+	
+	<select id="getListTitle" resultType="String">
+		select category_detail from product_category where category_num=#{param1}
+	</select>
+	
+	
+	<select id="getLatestPerCate" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and prd.category_num=#{param2}
+					order by prd.product_num desc) T)
+				where rn between #{param1.start} and #{param1.end}
+		
+	</select>
+	
+	<select id="getSellCountPerCate" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and prd.category_num=#{param2}
+					order by prd.product_sellcount desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getLowPerCate" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and prd.category_num=#{param2}
+					order by prd.product_price asc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getHighPerCate" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and prd.category_num=#{param2}
+					order by prd.product_price desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getLikePerCate" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and prd.category_num=#{param2}
+					order by prd.product_like desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getLatestSearch" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and (prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%')
+    					order by prd.product_like desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+
+	</select>
+	<select id="getSellCountSearch" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and (prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%')
+					order by prd.product_sellcount desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getLowSearch" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and (prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%')
+					order by prd.product_price asc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getHighSearch" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and (prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%')
+					order by prd.product_price desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+	<select id="getLikeSearch" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * 
+			from(select rownum rn, T.* 
+				from(select prd.product_num, prd.category_num, prd.product_name, prd.product_price, prd.product_stock, prd.product_like, prd.product_grade, prd.product_sellcount, th.stored_file_name, th.file_number, st.store_sname 
+					from product prd, product_thumb_imagefile th, store st 
+					where prd.product_num = th.product_num and prd.store_snum = st.store_snum and th.file_number=1 and (prd.product_name like '%'|| #{param2}|| '%' or st.store_sname like '%'|| #{param2}||'%')
+					order by prd.product_like desc) T)
+				where rn between #{param1.start} and #{param1.end}	
+		
+	</select>
+</mapper>

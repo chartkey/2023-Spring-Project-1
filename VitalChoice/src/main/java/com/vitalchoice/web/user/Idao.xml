@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vitalchoice.web.user.Service_user">
+	<insert id="user">
+		insert into user_table 
+		(user_id,user_pwd,user_name,user_phone,user_address1,
+		user_address2,user_address3,user_email,
+		user_birthday,user_gender,user_nickname,email_check,
+		user_role,user_totpurchase,user_grade,
+		user_point,user_insertdate)
+		
+		values(#{param1},#{param2},#{param3},#{param4},
+		#{param5},#{param6},#{param7},#{param8},#{param9},
+		#{param10},#{param11},#{param12},1,1,0,0,sysdate)
+	</insert>
+
+	<select id="idcheck" resultType="int">
+		select count(*) from user_table where user_id=#{param1}
+	</select>
+
+	<select id="emailcheck" resultType="int">
+		select count(*) from user_table where user_email=#{param9}
+	</select>
+	
+	<select id="logincheck" resultType="com.vitalchoice.web.user.UserDTO">
+		select * from user_table where user_id=#{param1} and
+		user_pwd=#{param2}
+	</select>
+	
+   <select id="idfind" resultType="com.vitalchoice.web.user.UserDTO">
+		select * from user_table where user_name=#{param1} and
+		user_phone=#{param2}
+	</select>
+	
+	 <select id="pwfind" resultType="com.vitalchoice.web.user.UserDTO">
+		select * from user_table where user_id=#{param1} and
+		user_email=#{param2}
+	</select>
+	
+  <select id="modify" resultType="com.vitalchoice.web.user.UserDTO">
+      select * from user_table where user_id=#{param1} 
+  </select>
+  
+   <update id="modifysave">
+   update user_table
+   set user_pwd = #{param2},
+       user_name = #{param3},
+       user_phone = #{param4},
+       user_address1 = #{param5},
+       user_address2 = #{param6},
+       user_address3 = #{param7},
+       user_email = #{param8},
+       user_birthday = #{param9},
+       user_gender = #{param10},
+       user_nickname = #{param11},
+       email_check = #{param12} 
+   where user_id = #{param1}
+</update>
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.productout.Service_productout">
+	<select id="productout" resultType="com.vitalchoice.web.product.ProductDTO">
+		select * from product where product_num = #{param1}
+	</select>
+	<select id="categoryout" resultType="com.vitalchoice.web.product.CategoryDTO">
+		select * from product_category where category_num = #{param1}
+	</select>
+	<select id="thumbout" resultType="com.vitalchoice.web.product.ImageDTO">
+		select * from product_thumb_imagefile where product_num = #{param1}
+	</select>
+	<select id="detailout" resultType="com.vitalchoice.web.product.ImageDTO">
+		select * from product_detail_imagefile where product_num = #{param1}
+	</select>
+	<select id="storenameout" resultType="String">
+		select store_sname from store 
+		where store_snum = (select store_snum from product where product_num = #{param1})
+	</select>
+	<update id="hitsUp">
+		update product set product_hits = product_hits+1 where product_num=#{param1}
+	</update>
+	<select id="getReviewCnt" resultType="Integer">
+		select count(*) from product_review where product_num = #{param1}
+	</select>
+	<select id="getReviewPerCnt" resultType="Integer">
+		select count(*) from product_review where product_num = #{param1} and review_grade=#{param2}
+	</select>
+	<select id="getReviewDTO" resultType="com.vitalchoice.web.review.ReviewDTO">
+		select user_id, content, to_char(reporting_date, 'yyyy.mm.dd') as reporting_date, review_grade
+		from product_review  
+		where product_num=#{param1}
+		order by reporting_date desc
+	</select>
+	<select id="getImg1" resultType="String">
+		select stored_file_name from product_review_imagefile where file_number=#{param1} and product_num=#{param2} and user_id=#{param3}
+	</select>
+	<select id="getImg2" resultType="String">
+		select stored_file_name from product_review_imagefile where file_number=#{param1} and product_num=#{param2} and user_id=#{param3}
+	</select>
+	<insert id="insertQna">
+		insert into product_reply(reply_number, product_num, user_id, content, reply_origin_number) 
+		values(reply_seq.nextval, #{param1}, #{param2}, #{param3}, reply_seq.currval)
+	</insert>
+	<select id="getReplyList" resultType="com.vitalchoice.web.productout.ReplyDTO">
+		select * from product_reply where product_num=#{param1} and reply_depth=0 
+		order by reply_number desc
+	</select>
+	<select id="getTotal" resultType="Integer">
+		select count(*) from product_reply where product_num=#{param1} and reply_depth=0
+	</select>
+	<select id="getSellerDTO" resultType="com.vitalchoice.web.productout.SellerDTO">		
+		select * from seller
+		where seller_id = (select seller_id from store
+        where store_snum = (select store_snum from product
+        where product_num = #{param1})
+        )
+	</select>
+	<select id="getAnswerContent" resultType="String">
+		select content from product_reply where reply_depth=1 and reply_origin_number=#{param1}
+	</select>
+	<select id="getCntLike" resultType="Integer">
+		select count(*) from product_like where product_num=#{param1}
+	</select>
+	<select id="getLikeYN" resultType="Integer">
+		select count(*) from product_like where product_num=#{param1} and user_id=#{param2}
+	</select>
+	<insert id="insertLike">
+		insert into product_like values(#{param1}, #{param2})
+	</insert>
+	<delete id="deleteLike">
+		delete from product_like where user_id=#{param1} and product_num=#{param2}
+	</delete>
+	<update id="productLikeUp">
+		update product set product_like =product_like+1 where product_num=#{param1}
+	</update>
+	<update id="productLikeDown">
+		update product set product_like =product_like-1 where product_num=#{param1}
+	</update>
+</mapper>

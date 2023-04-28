@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vitalchoice.web.survey.Service_survey">
+	<select id="surveycheck" resultType="String">
+		select count(*) from survey_detail where user_id = #{param1}
+	</select>
+	<select id="surveylist" resultType="com.vitalchoice.web.survey.SurveyDTO">
+		SELECT * FROM survey WHERE survey_gender IN ('0', #{param1}) AND survey_age = #{param2}
+	</select>
+	<insert id="suveyinsert">
+		insert into survey_detail values (#{param1},#{param2},#{param3},#{param4},#{param5})
+	</insert>
+	<select id="surveyresult" resultType="com.vitalchoice.web.survey.SurveydetailDTO">
+		select * from survey_detail,product_category where survey_check='1' and product_category.category_num = survey_detail.category_num and user_id=#{param1}
+	</select>
+	<select id="surveyresult2" resultType="com.vitalchoice.web.product.ProductDTO">
+		<![CDATA[
+		select * from Product where category_num = #{param1} and ROWNUM < 5
+		]]>
+	</select>
+	<select id="surveyresult3" resultType="com.vitalchoice.web.product.ProductDTO">
+		<![CDATA[
+			select * from Product where category_num = 1 and ROWNUM < 5
+		]]>
+	</select>
+</mapper>
