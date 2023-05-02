@@ -3,8 +3,8 @@
 
 # VITALCHOICE(바이탈초이스)
 ## Spring + JSP 파싱 (스프링 버전)(~ing)<br>
-### (Back-end 기능부분 구현완료)(코드 업로드 완료)<br>
-### (Front-end 부분 정리후 구현)(이미지 업로드 완료)
+#### (Back-end 기능부분 구현완료)(코드 업로드 완료)<br>
+#### (Front-end 부분 정리후 구현)(이미지 업로드 완료)
 #### Spring Boot + Thymeleaf (스프링부트 버전)준비중(~ing)
 
 ### 🖥️ 프로젝트 소개
