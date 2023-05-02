@@ -10,7 +10,7 @@
 ### 🖥️ 프로젝트 소개
 VITALCHOICE(바이탈초이스) <br>
 AI 활용 건강기능식품 추천 / 판매 및 드론배송 브랜드
-#### 프로젝트 소개 PDF<a href="https://github.com/chartkey/2023-Spring-Project-1/blob/main/etc/vitalchoice-0501-pdf.pdf">🖼PDF 보러가기</a>
+#### 프로젝트 소개 PPT<a href="https://github.com/chartkey/2023-Spring-Project-1/blob/main/etc/vitalchoice-0501-pdf.pdf">🖼PPT 보러가기</a>
 
 ### 🕰️ 개발 기간
 * 23.03.22일 - 23.05.18일 (~ing)
